@@ -205,20 +205,11 @@ def delete_all_existing():
 
 
 class Command(BaseCommand):
-    help = 'Imports a sample configuration/data set. \n' \
-           'There are two flavours of sample configurations. With groups and without groups within a round.\n' \
-           '    0 - dataset with grouping inside a round\n' \
-           '    1 - dataset with no grouping inside a round\n'
+    help = 'Imports a sample configuration/data set. \n'
 
     def handle(self, *args, **options):
-        type = 0
 
         delete_all_existing()
 
-        if type is None:
-            type = 0
+        create_dataset_with_groups()
 
-        if type == 0:
-            create_dataset_with_groups()
-        else:
-            create_dataset_without_groups()
